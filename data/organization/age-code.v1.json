@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "standardId": "AGE_CODE",
   "status": "PROPOSED",
   "scope": "Empirе of the Light fictional personas and consented human operations",
@@ -90,7 +90,8 @@
       },
       "realOperatorMinimumAgeYears": 18,
       "roleAgeUpperLimitYears": null,
-      "notes": "Apparent ages are visual style defaults, not personal ages or a rank. Exceptions may be approved for adult-appearing mentors or seniors."
+      "notes": "Apparent ages are visual style defaults, not personal ages or a rank. Exceptions may be approved for adult-appearing mentors or seniors.",
+      "narrativeCorrelationId": "N18"
     },
     {
       "id": "WINGS10",
@@ -101,7 +102,8 @@
       },
       "realOperatorMinimumAgeYears": 18,
       "roleAgeUpperLimitYears": null,
-      "notes": "Wing itself has NO biological age. Apparent ages are only a creative design cue for human depictions; specialist competence and safeguarding training govern assignments."
+      "notes": "Wing itself has NO biological age. Apparent ages are only a creative design cue for human depictions; specialist competence and safeguarding training govern assignments.",
+      "narrativeCorrelationId": "N17"
     },
     {
       "id": "RAID",
@@ -178,5 +180,15 @@
     "privacy",
     "religion",
     "organization"
-  ]
+  ],
+  "storyOfTheYears": {
+    "registry": "data/chronology/age-story-correlations.v1.1.json",
+    "documentation": "docs/AGE_STORY_CORRELATION.md",
+    "status": "PROJECT_NARRATIVE_MAPPING",
+    "narrativeUnder40": "NOT_A_FAITH_OR_ACCESS_TEST",
+    "milestone40": "OPTIONAL_REFLECTION_NOT_PROMOTION",
+    "lifespan100": "ASPIRATIONAL_NOT_GUARANTEED",
+    "lunarYear63": "REQUIRES_CALENDAR_ASSUMPTIONS",
+    "angelNumericYears": null
+  }
 }
