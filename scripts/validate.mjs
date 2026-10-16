@@ -45,4 +45,27 @@ for(const wing of wings.wings){
  assert.ok(god.personnel.some(x=>x.id===wing.proposedLeadPersonaSlot));
  assert.ok(pillars.pillars.some(x=>x.id===wing.primaryPillar));
 }
+
+const ages=read('data/organization/age-code.v1.json');
+assert.equal(ages.standardId,'AGE_CODE');
+assert.equal(ages.minimumIndependentOperatorAgeYears,18);
+assert.equal(ages.categories.length,5);
+assert.deepEqual(ages.categories.map(c=>c.code),['AGE-HUMAN','AGE-VISUAL','AGE-TENURE','AGE-THEOLOGY','AGE-SYSTEM']);
+const bands=ages.humanAgeBands;
+assert.equal(bands[0].minInclusive,0);
+for(let i=1;i<bands.length;i++) assert.equal(bands[i-1].maxExclusive,bands[i].minInclusive,'Non-contiguous age bands');
+assert.equal(bands.at(-1).maxExclusive,null);
+assert.equal(ages.roleFamilies.length,5);
+for(const role of ages.roleFamilies){
+ assert.ok(role.realOperatorMinimumAgeYears>=18);
+ assert.equal(role.roleAgeUpperLimitYears,null);
+}
+assert.ok(ages.roleFamilies.some(r=>r.id==='GOD99' && r.fictionalApparentAgeYears.min===18));
+assert.ok(ages.roleFamilies.some(r=>r.id==='WINGS10' && r.fictionalApparentAgeYears.min===25));
+assert.equal(ages.youthPolicy.ageBelowYears,18);
+assert.equal(ages.youthPolicy.independentCriticalApproval,false);
+assert.equal(ages.scriptureAge.chronologicalAgeYears,null);
+assert.equal(ages.scriptureAge.evidenceStatus,'NOT_SPECIFIED_AS_NUMERIC_AGE_IN_QURAN');
+assert.equal(ages.privacy.storeExactBirthdateByDefault,false);
+console.log('PASS: AGE CODE 5 dimensions, 6 age bands, G.O.D./WINGS role separation, youth restrictions, unknown scriptural angel ages.');
 console.log('PASS: 71 UNILEX (25/13/4/29), 4 source families, 4 pillars, 99 personas in 9x11 departments, 10 WINGS, referential integrity.');
