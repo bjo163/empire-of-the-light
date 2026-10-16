@@ -68,4 +68,29 @@ assert.equal(ages.scriptureAge.chronologicalAgeYears,null);
 assert.equal(ages.scriptureAge.evidenceStatus,'NOT_SPECIFIED_AS_NUMERIC_AGE_IN_QURAN');
 assert.equal(ages.privacy.storeExactBirthdateByDefault,false);
 console.log('PASS: AGE CODE 5 dimensions, 6 age bands, G.O.D./WINGS role separation, youth restrictions, unknown scriptural angel ages.');
+
+const story=read('data/chronology/age-story-correlations.v1.1.json');
+assert.equal(story.schemaVersion,'1.1.0');
+assert.equal(story.registryId,'AGE_STORY_CORRELATIONS');
+const sid=new Set(story.records.map(x=>x.id));
+assert.equal(story.records.length,18);
+assert.equal(sid.size,story.records.length);
+assert.equal(new Set(story.records.map(x=>x.key)).size,story.records.length);
+for(const s of story.records){
+ assert.ok(story.yearUnits.includes(s.unit), 'unrecognized year unit '+s.key);
+ assert.equal(s.usableForAuthorization,false);
+ assert.equal(s.usableForDivineJudgment,false);
+ if(s.sourceClass==='SCRIPTURE_TEXT')assert.ok(s.sourceReferences.length>0,'missing scripture source '+s.key);
+ for(const r of s.sourceReferences)assert.ok(r.url.startsWith('https://'),'insecure source URL');
+}
+assert.equal(story.records.find(x=>x.key==='ANGEL_AGE_UNKNOWN').numericValue,null);
+assert.equal(story.records.find(x=>x.key==='NOAH_950_AMONG_PEOPLE').unit,'SCRIPTURAL_YEARS_AMONG_PEOPLE');
+assert.equal(story.records.find(x=>x.key==='ROAD_TO_40D40N').unit,'DAYS_AND_NIGHTS');
+assert.equal(story.records.find(x=>x.key==='NEVERMORE_100_PLUS').category,'PERSONAL_NARRATIVE_ASPIRATION');
+assert.equal(story.records.find(x=>x.key==='WE_ARE_SAVAGES_UNDER_40').usableForAuthorization,false);
+assert.equal(ages.storyOfTheYears.narrativeUnder40,'NOT_A_FAITH_OR_ACCESS_TEST');
+assert.equal(ages.storyOfTheYears.angelNumericYears,null);
+for(const rf of ['GOD99','WINGS10'])assert.ok(sid.has(ages.roleFamilies.find(r=>r.id===rf).narrativeCorrelationId));
+console.log('PASS: Story of the Years — 18 source-attributed narrative markers; no age/faith conflation; angel years unknown.');
+
 console.log('PASS: 71 UNILEX (25/13/4/29), 4 source families, 4 pillars, 99 personas in 9x11 departments, 10 WINGS, referential integrity.');
