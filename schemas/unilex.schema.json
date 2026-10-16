@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UNILEX Registry v0.1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "status",
+    "entries"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "domain",
+          "preferredLabel",
+          "definition",
+          "relations",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[USTP][0-9]{3}$"
+          },
+          "domain": {
+            "enum": [
+              "UNIVERSAL",
+              "SCRIPTURE",
+              "TEXT_SOURCE",
+              "PROJECT"
+            ]
+          },
+          "preferredLabel": {
+            "type": "object",
+            "required": [
+              "en",
+              "id"
+            ],
+            "properties": {
+              "en": {
+                "type": "string",
+                "minLength": 1
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "definition": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 3
+              }
+            }
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "targetId"
+              ],
+              "properties": {
+                "type": {
+                  "enum": [
+                    "relatedTo",
+                    "inspiredBy",
+                    "distinctFrom",
+                    "exactMatch",
+                    "closeMatch",
+                    "narrowerThan",
+                    "broaderThan"
+                  ]
+                },
+                "targetId": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "empire-of-the-light-foundation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Versioned, source-aware terminology and foundation validation; no application service is deployed.",
+  "scripts": {
+    "validate": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
