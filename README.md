@@ -9,6 +9,8 @@ This repository is the **consolidated design and machine-readable foundation** f
 
 ## MONOREPO V4.0 — OPERATIONAL ENGINEERING
 
+Database cloud Free **Neon PostgreSQL** has been provisioned separately for this project. See [Free Database Setup](docs/FREE_DATABASE_NEON.md). No connection strings are in the repo; the application database schema is not migrated yet.
+
 The new [Genesis v4 monorepo blueprint](docs/BLUEPRINT_V4_MONOREPO.md) designs React/Vite 100CENTER, Next.js public portal, Fastify API and Drizzle/Postgres with [Odoo-style modules](docs/MODULE_SYSTEM_SPEC.md). Refer to [release gates](docs/OPERATIONS_RELEASE_GATES.md) and [ADR-0002 proposal](docs/adr/ADR-0002-modular-monorepo-proposal.md). This is **not** a production migration or change to the frozen Gen2 API ownership.
 
 ## Find your way

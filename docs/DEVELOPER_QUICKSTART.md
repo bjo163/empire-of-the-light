@@ -2,6 +2,10 @@
 
 Node >=22.12, pnpm 11.24, PostgreSQL for live database operations.
 
+## Cloud database: $0 initial plan
+
+Dedicated Neon Free project `empire-of-the-light`, region Singapore, PostgreSQL 18. Read [Neon Free DB setup](FREE_DATABASE_NEON.md). Supply `DATABASE_URL` as a private server-side secret from the Neon console. Do not put real credentials in frontend VITE_/NEXT_PUBLIC_ variables or in a commit. The cloud database exists but Drizzle migrations have not yet been applied.
+
 ## Local start
 1. Clone bjo163/empire-of-the-light.
 2. Activate pnpm using Corepack or the specified package manager version.
