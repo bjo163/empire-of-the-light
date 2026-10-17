@@ -7,6 +7,19 @@ This repository is the **consolidated design and machine-readable foundation** f
 
 **Status: FOUNDATION DESIGN BASELINE — PROPOSED. Not implemented, not production-certified.**
 
+
+## GENESIS v5 — QUANTUM, PROTON & BEYOND AI (PROPOSED)
+
+The v5 research blueprint adds a physics-measured energy OS, protonic and photonic technology research, optional quantum coprocessor benchmarking, Material Forge and separately sourced Daoist/Shinto comparative-cosmos libraries. **These are research designs; no new generators, QPUs, proton chips or materials are claimed built or installed.** V4's one public API/monorepo and human oversight remain.
+
+- [GENESIS V5 Master Blueprint](docs/BLUEPRINT_V5_QUANTUM_PROTON_BEYOND_AI.md)
+- [HELIOGRID energy and protonics](docs/HELIOGRID_PROTON_PHOTON_ENERGY_V5.md)
+- [Quantum/Photon/Proton Material Forge](docs/ULTRA_COMPUTE_MATERIAL_FORGE_V5.md)
+- [Multi-tradition Cosmos Corpus](docs/MULTI_TRADITION_COSMOS_CORPUS_V5.md)
+- [V5 Roadmap and research gates](docs/ROADMAP_V5_RESEARCH_GATES.md)
+- [ADR-0003 proposed](docs/adr/ADR-0003-v5-multiphysics-comparative-ecosystem.md)
+- [Technology horizon registry](data/architecture/technology-horizons.v5.json)
+
 ## MONOREPO V4.0 — OPERATIONAL ENGINEERING
 
 Database cloud Free **Neon PostgreSQL** has been provisioned separately for this project. See [Free Database Setup](docs/FREE_DATABASE_NEON.md). No connection strings are in the repo; the application database schema is not migrated yet.
