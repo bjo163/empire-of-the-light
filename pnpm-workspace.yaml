@@ -2,3 +2,7 @@ packages:
   - 'apps/*'
   - 'packages/*'
   - 'modules/*'
+
+# pnpm 11 allowlisted installation scripts; do not allow all dependencies.
+allowBuilds:
+  esbuild: true
