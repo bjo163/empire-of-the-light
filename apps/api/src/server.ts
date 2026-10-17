@@ -10,16 +10,13 @@ import { readFile } from "node:fs/promises";
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import pg from "pg";
 import { resolveModules, planEnabled } from "@empire/module-kit";
+import type { ModuleManifest } from "@empire/module-kit";
 
-type Manifest = {
-  id:string; title:string; version:string;owner:string; state:string; dependencies:string[];
-  capabilities:string[];permissions:string[];models:string[];migrations:string[];uiSlots:string[];runMode:string
-};
 const moduleIds=["kernel","research","scripture","journey","mission","governance","ziil"];
 const parse=async (path:string)=>JSON.parse(await readFile(new URL(path,import.meta.url),"utf8"));
-const manifests=await Promise.all(moduleIds.map(async id=>await parse("../../../modules/"+id+"/manifest.json"))) as Manifest[];
+const manifests=await Promise.all(moduleIds.map(async id=>await parse("../../../modules/"+id+"/manifest.json"))) as ModuleManifest[];
 const activation=await parse("../../../config/modules.json") as {approvedEnabled:string[]};
-const catalog=resolveModules(manifests) as readonly Manifest[];
+const catalog=resolveModules(manifests) as readonly ModuleManifest[];
 const enabled=planEnabled(manifests,activation.approvedEnabled) as readonly Manifest[];
 const app=Fastify({logger:{redact:["req.headers.authorization","req.headers.cookie"]}});
 const origins=(process.env.CORS_ORIGINS||"http://localhost:5173,http://127.0.0.1:5173").split(",").map(x=>x.trim()).filter(Boolean);
