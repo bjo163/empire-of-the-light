@@ -1,0 +1,26 @@
+{
+  "id": "research",
+  "title": "Research & Evidence",
+  "version": "0.1.0",
+  "owner": "research",
+  "state": "scaffold_only",
+  "dependencies": [
+    "kernel"
+  ],
+  "capabilities": [
+    "research-runs",
+    "workflows",
+    "jobs",
+    "evidence"
+  ],
+  "permissions": [
+    "research:read",
+    "research:write"
+  ],
+  "models": [],
+  "migrations": [],
+  "uiSlots": [
+    "operations.research"
+  ],
+  "runMode": "first_party_allowlisted"
+}
