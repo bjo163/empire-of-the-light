@@ -17,7 +17,7 @@ const parse=async (path:string)=>JSON.parse(await readFile(new URL(path,import.m
 const manifests=await Promise.all(moduleIds.map(async id=>await parse("../../../modules/"+id+"/manifest.json"))) as ModuleManifest[];
 const activation=await parse("../../../config/modules.json") as {approvedEnabled:string[]};
 const catalog=resolveModules(manifests) as readonly ModuleManifest[];
-const enabled=planEnabled(manifests,activation.approvedEnabled) as readonly Manifest[];
+const enabled=planEnabled(manifests,activation.approvedEnabled) as readonly ModuleManifest[];
 const app=Fastify({logger:{redact:["req.headers.authorization","req.headers.cookie"]}});
 const origins=(process.env.CORS_ORIGINS||"http://localhost:5173,http://127.0.0.1:5173").split(",").map(x=>x.trim()).filter(Boolean);
 await app.register(cors,{origin:origins,credentials:false});
