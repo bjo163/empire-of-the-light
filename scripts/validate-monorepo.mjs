@@ -22,8 +22,8 @@ const horizons=read("data/architecture/technology-horizons.v5.json");
 assert.equal(horizons.schemaVersion,"5.0.0");
 assert.equal(horizons.policy,"concept_records_do_not_enable_runtime");
 assert.equal(horizons.horizons.length,4);
-const ids=new Set(horizons.capabilities.map(c=>c.id));
-assert.equal(ids.size,horizons.capabilities.length,"duplicate v5 capability ids");
+const v5Ids=new Set(horizons.capabilities.map(c=>c.id));
+assert.equal(v5Ids.size,horizons.capabilities.length,"duplicate v5 capability ids");
 const options=new Set(horizons.horizons.map(h=>h.id));
 for(const item of horizons.capabilities){
  assert.ok(options.has(item.horizon), "invalid tech horizon");
