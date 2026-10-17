@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "1.0.0",
+  "approvedEnabled": [
+    "kernel"
+  ],
+  "note": "Only kernel bootstrap metadata is active. All other manifests are scaffold_only and not executable."
+}

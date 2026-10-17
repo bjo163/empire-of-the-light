@@ -1,13 +1,24 @@
 {
-  "name": "empire-of-the-light-foundation",
-  "version": "0.1.0",
+  "name": "empire-of-the-light",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Versioned, source-aware terminology and foundation validation; no application service is deployed.",
-  "scripts": {
-    "validate": "node scripts/validate.mjs"
-  },
+  "packageManager": "pnpm@11.24.0",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "validate": "node scripts/validate.mjs && node scripts/validate-monorepo.mjs",
+    "module:test": "node --test packages/module-kit/test/*.test.mjs",
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "test": "node scripts/validate.mjs && node scripts/validate-monorepo.mjs && node --test packages/module-kit/test/*.test.mjs",
+    "db:generate": "pnpm --filter @empire/db db:generate",
+    "db:migrate": "pnpm --filter @empire/db db:migrate"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "^5.9.3"
   }
 }
