@@ -1,4 +1,3 @@
-
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {resolveModules,planEnabled} from "../packages/module-kit/src/index.mjs";
@@ -18,4 +17,21 @@ for(const pkg of ["apps/api","apps/command-center","apps/portal","packages/db","
  const item=read(pkg+"/package.json");
  assert.equal(item.private,true);
 }
+
+const horizons=read("data/architecture/technology-horizons.v5.json");
+assert.equal(horizons.schemaVersion,"5.0.0");
+assert.equal(horizons.policy,"concept_records_do_not_enable_runtime");
+assert.equal(horizons.horizons.length,4);
+const v5Ids=new Set(horizons.capabilities.map(c=>c.id));
+assert.equal(v5Ids.size,horizons.capabilities.length,"duplicate v5 capability ids");
+const options=new Set(horizons.horizons.map(h=>h.id));
+for(const item of horizons.capabilities){
+ assert.ok(options.has(item.horizon), "invalid tech horizon");
+ assert.ok(item.projectStatus && item.dependency && item.owner);
+ assert.notEqual(item.projectStatus,"PRODUCTION_CERTIFIED");
+}
+assert.ok(horizons.capabilities.find(c=>c.id==="hydrogen-pem")?.horizon==="H2");
+assert.ok(horizons.capabilities.find(c=>c.id==="phonny")?.projectStatus==="NAME_UNCONFIRMED");
+console.log("PASS: V5 horizon registry, no unfounded operational claims, quantum/proton/energy and source research segregated.");
+
 console.log("PASS: seven first-party module manifests, dependency order, kernel allowlist, workspace packages.");
